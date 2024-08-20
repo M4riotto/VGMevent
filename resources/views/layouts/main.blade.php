@@ -24,7 +24,12 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="collapse navbar-collapse" id="navbar">
                 <a href="/" class="navbar-brand">
-                    <img src="/img/hdcevents_logo.svg" alt="HDC Events" width="50px">
+                    <div class="flex row ">
+
+                        <img src="/img/hdcevents_logo.svg" alt="HDC Events" width="50px">
+                        <h2>VGM Events</h2>
+
+                    </div>
                 </a>
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -47,8 +52,8 @@
     <main>
         <div class="container-fluid">
             <div class="row">
-                @if(session('msg'))
-                    <p class="msg">{{session('msg')}}</p>
+                @if (session('msg'))
+                    <p class="msg">{{ session('msg') }}</p>
                 @endif
                 @yield('content')
             </div>
