@@ -3,31 +3,32 @@
 @section('content')
 
 
-    @if ($nome === null)
-        <p>nao logdado</p>
-    @elseif('teste' === 'teste')
-        <p>isso é um teste</p>
-    @else
-        <p>{{ $nome }}</p>
-    @endif
+    <div id="search-container" class="col-md-12">
+        <h1>Busque um evneto</h1>
+        <form action="">
+            <input type="text" id="search" name="search" class="form-control" placeholder="Procurar...">
+        </form>
+    </div>
+    <div id="events-container" class="col-md-12">
+        <h2>Proximos eventos</h2>
+        <p class="subtitle">Veja os evento dos próximos dias</p>
+        <div id="cards-container" class="row">
 
 
-    @for ($i = 0; $i < count($arr); $i++)
-        <h1>{{ $arr[$i] }} - {{ $i }}</h1>
+            @foreach ($events as $event)
+                <div class="card col-md-3">
+                    <img src="/img/event_placeholder.jpg" alt={{$event->title}}>
+                    <div class="card-body">
+                        <p class="card-date">10/09/2024</p>
+                        <h5 class="card-title">{{$event->title}}</h5>
+                        <p class="card-participants">x - participantyes</p>
+                        <a href="#" class="btn btn-primary">Saber mais</a>
+                    </div>
+                </div>
+            @endforeach
 
-        @if ($i === 2)
-            <p>o I=2</p>
-        @endif
-    @endfor
+        </div>
+    </div>
 
-    @foreach ($names as $name)
-        <p>{{$loop -> index}}</p>
-        <p>{{$name}}</p>
-    @endforeach
 
-    @php
-        $nome = 34343;
-        echo $nome;
-    @endphp
-
-    @endsection
+@endsection
