@@ -5,13 +5,18 @@
 
     <div id="search-container" class="col-md-12">
         <h1>Busque um evneto</h1>
-        <form action="">
+        <form action="/" method="GET">
             <input type="text" id="search" name="search" class="form-control" placeholder="Procurar...">
+            <input type="submit">
         </form>
     </div>
     <div id="events-container" class="col-md-12">
-        <h2>Proximos eventos</h2>
-        <p class="subtitle">Veja os evento dos próximos dias</p>
+       @if ($search)
+       <h2>Buscando por: {{$search}}</h2>
+       @else
+       <h2>Proximos eventos</h2>
+       <p class="subtitle">Veja os evento dos próximos dias</p>
+       @endif
         <div id="cards-container" class="row">
 
 
@@ -19,13 +24,19 @@
                 <div class="card col-md-3">
                     <img src="/img/events/{{$event->image}}" alt={{$event->title}}>
                     <div class="card-body">
-                        <p class="card-date">10/09/2024</p>
+                        <p class="card-date">{{date('d/m/y', strtotime($event->date))}}</p>
                         <h5 class="card-title">{{$event->title}}</h5>
                         <p class="card-participants">x - participantyes</p>
                         <a href="/events/{{$event->id}}" class="btn btn-primary">Saber mais</a>
                     </div>
                 </div>
             @endforeach
+
+            @if(count($events) == 0 && $search)
+            <p>Não foi possivel encontrar nenhum evento com <b><u> {{$search}}</u></b>! <a href="/" class="btn btn-primary">Ver todos</a></p>
+            @elseif(count($events) == 0)
+            <p>Não há eventos disponiveis</p>
+            @endif
 
         </div>
     </div>

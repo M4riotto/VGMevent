@@ -10,25 +10,38 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::All();
-        return view('welcome', ['events' => $events]);
+        $search = request('search');
+
+        if ($search) {
+            $events = Event::where([
+                ['title', 'like', '%' . $search . '%']
+            ])->get();
+        } else {
+            $events = Event::All();
+        }
+
+
+        return view('welcome', ['events' => $events, 'search' => $search]);
     }
 
-    public function create(){
+    public function create()
+    {
         return view('events.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $event = new Event();
 
         $event->title = $request->title;
+        $event->date = $request->date;
         $event->city = $request->city;
         $event->private = $request->private;
         $event->description = $request->description;
         $event->items = $request->items;
 
         //image upload
-        if($request->hasfile('image') && $request->file('image')->isValid()){
+        if ($request->hasfile('image') && $request->file('image')->isValid()) {
 
             $requestImage = $request->image;
 
@@ -47,11 +60,11 @@ class EventController extends Controller
         return redirect('/')->with('msg', 'Evento criado com sucesso!');
     }
 
-    public function show($id){
+    public function show($id)
+    {
 
         $event = Event::findOrFail($id);
 
         return view('events.show', ['event' => $event]);
-
     }
 }
