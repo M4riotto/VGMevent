@@ -201,6 +201,16 @@
   #items-list li{
     display: flex;
   }
+
+  /* DASHBOARD */
+  .dashboard-tittle-container{
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+
+  .dashboard-events-container th{
+    width: 25%;
+  }
   
   /* footer */
   footer {

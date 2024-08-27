@@ -17,15 +17,18 @@
                 <th scope="col">Ações</th>
             </tr>
         </thead>
-    </table>
-    <tbody>
+        <tbody>
         @foreach ($events as $event)
             <tr>
-                <th scope="row">{{ $loop->index+1 }}</th>
-                <td><a href="/events/{{ $events->id }}">{{$events->title}}</a></td>
+                <td scope="row">{{ $loop->index+1 }}</td>
+                <td><a href="/events/{{ $event->id }}">{{$event->title}}</a></td>
+                <td>0</td>
+                <td><a href="">Editar</a><a href="">Deletar</a></td>
             </tr>
         @endforeach
     </tbody>
+    </table>
+    
     @else
     <p>Você ainda não tem eventos, <a href="/events/create">criar eventto.</a></p>
     @endif 
