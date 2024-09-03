@@ -13,7 +13,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
-                        <th scope="col">Participanttes</th>
+                        <th scope="col">Participantes</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
@@ -22,9 +22,10 @@
                         <tr>
                             <td scope="row">{{ $loop->index + 1 }}</td>
                             <td><a href="/events/{{ $event->id }}">{{ $event->title }}</a></td>
-                            <td> {{count($event->users)}}</td>
+                            <td> {{ count($event->users) }}</td>
                             <td>
-                                <a href="/events/edit/{{ $event->id }}" class="btn btn-info edit-btn"><ion-icon name='create-outline'></ion-icon>
+                                <a href="/events/edit/{{ $event->id }}" class="btn btn-info edit-btn"><ion-icon
+                                        name='create-outline'></ion-icon>
                                     Editar</a>
                                 <form action="/events/{{ $event->id }}" method="POST">
                                     @csrf
@@ -40,8 +41,42 @@
                 </tbody>
             </table>
         @else
-            <p>Você ainda não tem eventos, <a href="/events/create">criar eventto.</a></p>
+            <p>Você ainda não tem eventos, <a href="/events/create">criar evento.</a></p>
         @endif
     </div>
+
+    <div class="col-md-10 offset-md-1 dashboard-title-container">
+        <h1>Eventos que estou participando</h1>
+    </div>
+
+    <div class="col-md-10 offset-md-1 dashboard-events-container">
+        @if (count($eventsasparticipants) > 0)
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Participantes</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($eventsasparticipants as $event)
+                        <tr>
+                            <td scope="row">{{ $loop->index + 1 }}</td>
+                            <td><a href="/events/{{ $event->id }}">{{ $event->title }}</a></td>
+                            <td> {{ count($event->users) }}</td>
+                            <td>
+                                <a href="#">Sair do evento</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            <p>Você ainda não está em nenhum eventos, <a href="/">Veja todos os events</a></p>
+        @endif
+    </div>
+
 
 @endsection
