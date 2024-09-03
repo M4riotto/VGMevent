@@ -16,9 +16,14 @@
                 <p class="event-owner"><ion-icon name="star-outline"></ion-icon> {{ $eventOwner['name'] }}</p>
                 <form action="/events/join/{{ $event->id }}" method="POST">
                     @csrf
+                    @if(!$hasUserJoined)
                     <a href="/events/join/{{ $event->id }}" class="btn btn-primary" id="event-submit" onclick="event.preventDefault(); this.closest('form').submit();">
                         Confirmar Presença
                     </a>
+                    @else
+                       <p class="already-joined-msg">Você já confirmou sua presença aqui! <a href="/">Ver outros eventos </a></p> 
+                    @endif
+                    
                 </form>
                 <h3>O evento conta com: </h3>
                 <ul id="items-list">

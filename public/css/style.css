@@ -3,11 +3,14 @@
     --secondary: #c28008;
     --white: #fff;
     --gray-light: #ccc;
+    --azul-bebe:#cce5ff;
     --gray-secondary: #757575;
     --gray-dark: #212121;
     --bg-footer: #353e48
     --verde-light: #D4EDDA;
-    --verde-dark: #155724
+    --verde-dark: #155724;
+    --azul: #004085;
+    --azul-pastel: #b8daff
   }
   body {
     min-height: 100vh;
@@ -47,6 +50,15 @@
     text-align: center;
     padding: 10px;
   }
+
+#info-container .already-joined-msg{
+  margin: 15px 0;
+  color: var(--azul);
+  background-color: var(--azul-bebe);
+  border: 1px solid var(--azul-pastel);
+  padding: 10px;
+  width: 275px;
+}
   
   /* navbar */
   #navbar img {
