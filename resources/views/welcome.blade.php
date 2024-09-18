@@ -4,17 +4,17 @@
 
 
     <div id="search-container" class="col-md-12">
-        <h1>Busque um evneto</h1>
+        <h1>Busque um Evento</h1>
         <form action="/" method="GET">
             <input type="text" id="search" name="search" class="form-control" placeholder="Procurar...">
-            <input type="submit">
+            <input type="submit" class="btn btn-primary mt-3">
         </form>
     </div>
     <div id="events-container" class="col-md-12">
        @if ($search)
        <h2>Buscando por: {{$search}}</h2>
        @else
-       <h2>Proximos eventos</h2>
+       <h2>Próximos eventos</h2>
        <p class="subtitle">Veja os evento dos próximos dias</p>
        @endif
         <div id="cards-container" class="row">
